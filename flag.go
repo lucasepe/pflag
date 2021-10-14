@@ -573,7 +573,7 @@ func UnquoteUsage(flag *Flag) (name string, usage string) {
 			for j := i + 1; j < len(usage); j++ {
 				if usage[j] == '`' {
 					name = usage[i+1 : j]
-					usage = usage[:i] + name + usage[j+1:]
+					usage = strings.TrimSpace(usage[j+1:]) // usage[:i] + name + usage[j+1:]
 					return name, usage
 				}
 			}
